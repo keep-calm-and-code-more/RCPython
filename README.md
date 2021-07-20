@@ -31,3 +31,7 @@ python连接RepChain的示范性项目，提交交易并获取返回结果，同
 2. 新建 Feat_xxx 分支
 3. 提交代码
 4. 新建 Pull Request
+
+#### Additional info
+
+1. run_proto.sh下载RepChain的proto文件重新生成peer_pb2.py
