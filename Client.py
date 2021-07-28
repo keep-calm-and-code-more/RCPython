@@ -1,6 +1,10 @@
 # -*-coding:utf-8-*-
 
-from . import peer_pb2 as peer
+import sys
+import os
+sys.path.append(os.path.abspath("."))
+
+import peer_pb2 as peer
 import time
 from google.protobuf import timestamp_pb2
 import uuid
@@ -18,7 +22,7 @@ class Client:
     # 主机名,pem文件路径,pem文件密码,别名,证书名,用户名
     def __init__(
         self,
-        host="localhost:9081",
+        host="localhost:8081",
         pem_path=os.path.join(
             os.path.dirname(__file__), "certs", "121000005l35120456.node1.pem"
         ),
