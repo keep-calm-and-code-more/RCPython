@@ -1,10 +1,5 @@
 # -*-coding:utf-8-*-
-
-import sys
-import os
-sys.path.append(os.path.abspath("."))
-
-import peer_pb2 as peer
+from . import peer_pb2 as peer
 import time
 from google.protobuf import timestamp_pb2
 import uuid
