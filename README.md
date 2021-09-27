@@ -1,7 +1,7 @@
 # RCPython
 
 #### 项目介绍
-python连接RepChain的示范性项目，提交交易并获取返回结果，同步获取块数据.
+python连接[RepChain](https://gitee.com/BTAJL/repchain)的示范性项目，提交交易并获取返回结果，同步获取块数据.
 
 #### 软件架构
 软件架构说明
