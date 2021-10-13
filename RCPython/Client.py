@@ -17,12 +17,10 @@ class Client:
     # 主机名,pem文件路径,pem文件密码,别名,证书名,用户名
     def __init__(
         self,
+        pem_path,
+        credit_code,
         host="localhost:8081",
-        pem_path=os.path.join(
-            os.path.dirname(__file__), "certs", "121000005l35120456.node1.pem"
-        ),
         password=None,
-        credit_code="121000005l35120456",
         cert_name="node1",
     ):
         self.host = host
