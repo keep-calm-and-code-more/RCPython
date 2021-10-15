@@ -11,6 +11,12 @@ import requests
 import json
 import binascii
 import os
+from enum import Enum
+
+
+class SigAlg(Enum):
+    sha1 = hashes.SHA1
+    sha256 = hashes.SHA256
 
 
 class Client:
@@ -19,15 +25,17 @@ class Client:
         self,
         pem_path,
         credit_code,
+        alg,
+        cert_name="node1",
         host="localhost:8081",
         password=None,
-        cert_name="node1",
     ):
         self.host = host
         self.pem_path = pem_path
         self.password = password
         self.credit_code = credit_code
         self.cert_name = cert_name
+        self.alg = alg
 
     # 指定唯一合约:名称+版本号
     def __get_cid(self, chaincode_name, chaincode_ver):
@@ -62,12 +70,12 @@ class Client:
         sig.cert_id.CopyFrom(self.__get_certid())
         sig.tm_local.CopyFrom(timestamp_pb2.Timestamp(seconds=seconds, nanos=nanos))
         sig_bytes = self.__get_pvkey().sign(
-            transaction.SerializeToString(), ec.ECDSA(hashes.SHA1())
+            transaction.SerializeToString(), ec.ECDSA(self.alg.value())
         )
         sig.signature = sig_bytes
         return sig
 
-    ##从文件路径得到内容
+    # 从文件路径得到内容
     def __get_code(self, package_path):
         f = open(package_path, 'rb')
         return f.read()
